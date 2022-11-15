@@ -2,14 +2,19 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
+  name: helloworldapp
   labels:
-    name: helloworldapp
+    app: dummy
 spec:
   replicas: 1
+  selector:
+    matchLabels:
+      app: dummy
   template:
     metadata:
+      name: helloworldapp
       labels:
-        name: helloworldapp
+        app: dummy
     spec:
       containers:
       - image: neetimunshi/helloworld-neeti
@@ -22,13 +27,14 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
+  name: helloworldapp
   labels:
-    name: helloworldapp
+    app: dummy
 spec:
   type: NodePort
   ports:
   - port: 8080
     targetPort: 8080
     nodePort: 30009
-    selector:
-      name: helloworldapp
+  selector:
+    app: dummy
