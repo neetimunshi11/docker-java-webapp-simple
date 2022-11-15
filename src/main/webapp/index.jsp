@@ -12,6 +12,5 @@
 		You are running container on host <b><%= request.getLocalName() %></b><br/>
 		IP Address : <%=request.getLocalAddr() %>
 	</p>
-	<h3>Access this demo from my <a href="https://github.com/mahendra-shinde/docker-java-webapp-simple">Git Repository </a></h3>
 </body>
 </html>
