@@ -1,0 +1,34 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    name: helloworldapp
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        name: helloworldapp
+    spec:
+      containers:
+      - image: neetimunshi/helloworld-neeti
+        name: helloworldapp
+        ports:
+        - name: helloworldapp
+          containerPort: 8080
+---
+# Node Port Service
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: helloworldapp
+spec:
+  type: NodePort
+  ports:
+  - port: 8080
+    targetPort: 8080
+    nodePort: 30009
+    selector:
+      name: helloworldapp
