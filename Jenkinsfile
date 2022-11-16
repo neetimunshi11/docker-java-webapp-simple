@@ -1,6 +1,7 @@
 node{
+    
     stage("Git Clone"){
-        git credentialsId: '035d9e7d-04e6-4942-8dd4-2bbff6dee613', url: 'https://github.com/neetimunshi11/simple-java-maven-app.git'
+        git credentialsId: '035d9e7d-04e6-4942-8dd4-2bbff6dee613', url: 'https://github.com/neetimunshi11/docker-java-webapp-simple.git'
         
     }
     stage("maven clean build"){
@@ -19,19 +20,7 @@ node{
         sh "docker push neetimunshi/java-helloworld"
     }
     
-    stage("Deploy To Kuberates Cluster"){
-              kubernetes {
-                yamlFile 'helloworld_deployment.yaml' 
-            }
-     }
-
-
-stage("Deploy To Kuberates Cluster"){
-        steps{
-            script{
-                kubernetesDeploy(configs: 'helloworld_deployment.yaml', kubeconfigId: 'KUBENETES_CREDENTIALS')
-            }
-        }
-       
+    stage("Deploy To Kubernetes Cluster"){
+       kubernetesDeploy configs: 'helloworld_deployment.yaml', enableConfigSubstitution: true,  kubeconfigId: 'kubecluster'
      }
 }
