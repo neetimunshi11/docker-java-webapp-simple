@@ -10,7 +10,6 @@
 	<h2>Hello World!</h2>
 	<p>
 		You are running container on host <b><%= request.getLocalName() %></b><br/>
-		IP Address : <%=request.getLocalAddr() %>
 	</p>
 </body>
 </html>
