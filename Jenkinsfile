@@ -11,13 +11,13 @@ node{
         sh "${mavenCMD} clean package"
     }
     stage("Build docker image"){
-        sh "docker build -t neetimunshi/java-helloworld ."
+        sh "docker build -t neetimunshi/helloworld-neeti ."
     }
     stage("Docker Push"){
         withCredentials([string(credentialsId: 'DOCKER_HUB_CREDENTIALS', variable: 'DOCKER_HUB_CREDENTIALS')]) {
         sh "docker login -u neetimunshi -p ${DOCKER_HUB_CREDENTIALS}"
         }
-        sh "docker push neetimunshi/java-helloworld"
+        sh "docker push neetimunshi/helloworld-neeti"
     }
     
     stage("Deploy To Kubernetes Cluster"){

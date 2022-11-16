@@ -7,7 +7,7 @@
 <title>Welcome to Containerized Java Web Application</title>
 </head>
 <body>
-	<h2>Hello World!</h2>
+	<h2>Hello Neeti!</h2>
 	<p>
 		You are running container on host <b><%= request.getLocalName() %></b><br/>
 	</p>
